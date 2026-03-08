@@ -29,7 +29,7 @@ st.markdown(f"""
 <div class="letter-box">
     <h3>Dear Anisha Kanchii,</h3>
     <p>
-    Just like these flowers, my appreciation for you keeps growing. 
+    Just like the flowers, my appreciation for you keeps growing. 
     You make everything a bit more colorful and a lot more meaningful.
     <br><br>
     I coded this little surprise just for you to show how much I appreciate you. 
