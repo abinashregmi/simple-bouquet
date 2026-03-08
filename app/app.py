@@ -2,26 +2,23 @@ import streamlit as st
 import requests
 from streamlit_lottie import st_lottie
 
-# Page Config
+# Page config
 st.set_page_config(page_title="For Anisha Kanchii", page_icon="💐")
 
-# CSS to fix the "invisible text" and center the surprise
+# CSS to fix invisible text and style the letter
 st.markdown("""
     <style>
     .letter-box {
         background-color: #fffaf0;
-        padding: 25px;
+        padding: 30px;
         border-radius: 15px;
         border: 2px solid #ffccd5;
-        color: #333333 !important;
+        color: #333333 !important; /* Forces text to be dark */
         margin-bottom: 20px;
+        font-family: 'Arial';
     }
-    h3, p { color: #d63384 !important; }
-    .stButton>button {
-        background-color: #d63384;
-        color: white;
-        border-radius: 20px;
-    }
+    .letter-box h3 { color: #d63384 !important; }
+    .letter-box p { color: #4a4a4a !important; font-size: 18px; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -32,11 +29,10 @@ def load_lottie(url):
     except:
         return None
 
-# Load the Surprise Bouquet (Hidden until button is clicked)
-surprise_bouquet_url = "https://assets2.lottiefiles.com/packages/lf20_w51pcehl.json"
-lottie_surprise = load_lottie(surprise_bouquet_url)
+# Load the Surprise Bouquet
+lottie_surprise = load_lottie("https://assets2.lottiefiles.com/packages/lf20_w51pcehl.json")
 
-# 1. The Letter
+# Display the Letter
 st.markdown(f"""
 <div class="letter-box">
     <h3>Dear Anisha Kanchii,</h3>
@@ -53,11 +49,12 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# 2. The Surprise Logic (No balloons, just the bouquet)
-if st.button("Click for your bouquet! 💐"):
+# The Surprise Logic
+if st.button("Click for your surprise! 💐"):
     if lottie_surprise:
-        # This renders the big bouquet only after the click
+        # This replaces the balloons with the actual bouquet animation
         st_lottie(lottie_surprise, height=500, key="surprise_bloom")
         st.markdown("<h2 style='text-align:center; color:#d63384;'>For You!</h2>", unsafe_allow_html=True)
     else:
-        st.error("The bouquet is taking a moment to bloom. Please refresh!")
+        # If the library still isn't working, this error will show instead of the laptop
+        st.error("The bouquet animation is still loading. Please check your requirements.txt!")
